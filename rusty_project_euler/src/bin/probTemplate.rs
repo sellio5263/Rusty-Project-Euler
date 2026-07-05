@@ -14,8 +14,8 @@ fn main() {
             println!("Time elapsed: {:?}", duration);
         }
         if args.len() > 1 {
-            let upper_bound = args[1].parse::<u32>().unwrap_or(1000);
-            let result = problem(Some(upper_bound));
+            let param = args[1].parse::<u32>().unwrap_or(0);
+            let result = problem(Some(param));
             println!("Result: {}", result)
         }
     } else {
@@ -24,7 +24,6 @@ fn main() {
     }
 }
 
-fn problem(upper_bound: Option<u32>) -> u32 {
-    let upper_bound = upper_bound.unwrap_or(1000);
-    (3..upper_bound).filter(|x| x % 3 == 0 || x % 5 == 0).sum()
+fn problem(param: Option<u32>) -> u32 {
+    param.unwrap_or(0)
 }

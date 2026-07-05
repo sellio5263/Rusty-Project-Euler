@@ -103,7 +103,7 @@ fn run_problem(problem_number: u32, args: Option<Vec<String>>) {
         command.arg("--");
         command.args(arguments);
     }
-    dbg!(&command);
+    // dbg!(&command);
     let output = command
         .output()
         .unwrap_or_else(|_| panic!("Problem {} Failed: ", problem_number));
