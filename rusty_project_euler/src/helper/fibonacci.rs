@@ -1,3 +1,3 @@
-pub fn next_fibbonacci(a: u64, b: u64) -> u64 {
+pub fn next_fibonacci(a: u32, b: u32) -> u32 {
     a + b
 }
