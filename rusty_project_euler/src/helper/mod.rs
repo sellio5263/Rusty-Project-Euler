@@ -1,3 +1,4 @@
 pub mod factors;
 pub mod fibonacci;
-pub mod palindrome;
+pub mod palindromes;
+pub mod primes;
