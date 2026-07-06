@@ -30,9 +30,16 @@ fn main() {
                 }
             }
             "time" => {
-                println!(
-                    "Error: Time command not implemented yet. Use 'run' with '--time' flag instead."
-                );
+                if let Some(arguments) = args {
+                    let problem_number = arguments[0].parse::<u32>().unwrap_or(0);
+                    if problem_number == 0 {
+                        println!("Error: Invalid problem number.");
+                        continue;
+                    }
+                    time_problem(problem_number);
+                } else {
+                    println!("Error: No problem number provided.");
+                }
             }
             _ => {
                 println!("Unknown command: {}", command);
@@ -103,12 +110,20 @@ fn run_problem(problem_number: u32, args: Option<Vec<String>>) {
         command.arg("--");
         command.args(arguments);
     }
-    // dbg!(&command);
+    dbg!(&command);
     let output = command
         .output()
         .unwrap_or_else(|_| panic!("Problem {} Failed: ", problem_number));
     let stdout = String::from_utf8(output.stdout).unwrap();
     println!("Problem {} Output:\n{}", problem_number, stdout);
+}
+
+fn time_problem(problem_number: u32) {
+    if !get_list_problems().contains(&problem_number) {
+        println!("Error: Problem {} not found.", problem_number);
+        return;
+    }
+    run_problem(problem_number, Some(vec!["--time".to_string()]));
 }
 
 /*
