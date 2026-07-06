@@ -4,7 +4,7 @@ use std::time::Instant;
 fn main() {
     // Flag Possible: --time|-t: Measure execution time
     let args = env::args().collect::<Vec<String>>();
-    dbg!(&args);
+    // dbg!(&args);
     if args.len() > 1 {
         if args.contains(&"--time".into()) || args.contains(&"-t".into()) {
             let start = Instant::now();
