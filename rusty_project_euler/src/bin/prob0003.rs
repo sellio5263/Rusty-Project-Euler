@@ -13,8 +13,7 @@ fn main() {
             let duration = start.elapsed();
             println!("Result: {}", result);
             println!("Time elapsed: {:?}", duration);
-        }
-        if args.len() > 1 {
+        } else {
             let param = args[1].parse::<u64>().unwrap_or(600851475143);
             let result = problem(Some(param));
             println!("Result: {}", result)
