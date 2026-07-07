@@ -1,7 +1,7 @@
 use std::env;
 use std::time::Instant;
 
-use rusty_project_euler::helper::palindrome;
+use rusty_project_euler::helper::palindromes;
 
 fn main() {
     // Flag Possible: --time|-t: Measure execution time
@@ -35,7 +35,7 @@ fn problem(digits: Option<u32>) -> u32 {
             if a * b <= largest_palindrome {
                 break;
             }
-            if palindrome::is_palindrome(a * b) {
+            if palindromes::is_palindrome(a * b) {
                 largest_palindrome = a * b;
             }
             b -= 1;
