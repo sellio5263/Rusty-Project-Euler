@@ -22,3 +22,20 @@ pub fn gcd(mut a: u32, mut b: u32) -> u32 {
     }
     a
 }
+
+pub fn num_factors(n: u32) -> u32 {
+    let mut factor_count = 0;
+    for i in 1..=n.isqrt() {
+        if n.is_multiple_of(i) {
+            factor_count += 1;
+        }
+    }
+    factor_count *= 2;
+    if (n as f32).sqrt() == n.isqrt() as f32 {
+        // dbg!(n);
+        // dbg!((n as f32).sqrt());
+        // dbg!(n.isqrt() as f32);
+        factor_count -= 1;
+    }
+    factor_count
+}
