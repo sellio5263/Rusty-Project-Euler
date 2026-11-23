@@ -5,3 +5,4 @@ pub mod mega_int;
 pub mod palindromes;
 pub mod primes;
 pub mod sequences;
+pub mod words;
