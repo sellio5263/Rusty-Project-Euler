@@ -125,6 +125,14 @@ impl MegaUInt {
     }
 }
 
+pub fn mega_uint_factorial(n: u32) -> MegaUInt {
+    let mut result = MegaUInt::one();
+    for i in 2..=n {
+        result = result.multiply(&mega_int_from_string(&i.to_string()));
+    }
+    result
+}
+
 impl Display for MegaUInt {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(

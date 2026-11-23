@@ -29,7 +29,7 @@ pub fn number_letter_count(n: u32) -> u32 {
         count += number_letter_count(n % 1000);
     } else if n >= 100 {
         count += number_letter_count(n / 100) + 7; // 'hundred' has 7 letters
-        if n % 100 != 0 {
+        if !n.is_multiple_of(100) {
             count += 3; // 'and' has 3 letters
             count += number_letter_count(n % 100);
         }

@@ -1,3 +1,4 @@
+use rusty_project_euler::helper::mega_int::mega_uint_factorial;
 use std::env;
 use std::time::Instant;
 
@@ -13,7 +14,7 @@ fn main() {
             println!("Result: {}", result);
             println!("Time elapsed: {:?}", duration);
         } else {
-            let param = args[1].parse::<u32>().unwrap_or(0);
+            let param = args[1].parse::<u32>().unwrap_or(100);
             let result = problem(Some(param));
             println!("Result: {}", result)
         }
@@ -24,5 +25,8 @@ fn main() {
 }
 
 fn problem(param: Option<u32>) -> u32 {
-    param.unwrap_or(0)
+    let param = param.unwrap_or(100);
+    let factorial = mega_uint_factorial(param);
+    let sum_of_digits: u32 = factorial.digits().iter().map(|&d| d as u32).sum();
+    sum_of_digits
 }
