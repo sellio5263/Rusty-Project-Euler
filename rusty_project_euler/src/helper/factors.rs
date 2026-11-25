@@ -39,3 +39,22 @@ pub fn num_factors(n: u32) -> u32 {
     }
     factor_count
 }
+
+pub fn sum_proper_divisors(n: u32) -> u32 {
+    let mut sum = 0;
+
+    for i in 1..=n.isqrt() {
+        if n.is_multiple_of(i) {
+            sum += i;
+            if i != 1 && i != n / i {
+                sum += n / i;
+            }
+        }
+    }
+
+    sum
+}
+
+pub fn is_abundant(n: u32) -> bool {
+    sum_proper_divisors(n) > n
+}

@@ -44,3 +44,10 @@ pub fn number_letter_count(n: u32) -> u32 {
 
     count
 }
+
+pub fn alphabetical_value(s: &str) -> u32 {
+    s.chars()
+        .filter(|c| c.is_ascii_alphabetic())
+        .map(|c| (c.to_ascii_uppercase() as u32) - ('A' as u32) + 1)
+        .sum()
+}

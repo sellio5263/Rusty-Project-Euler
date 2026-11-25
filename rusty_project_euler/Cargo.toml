@@ -3,3 +3,7 @@ name = "rusty_project_euler"
 version = "0.1.0"
 edition = "2024"
 default-run = "rusty_project_euler"
+
+[dependencies]
+factorial = "0.4.0"
+itertools = "0.15.0"

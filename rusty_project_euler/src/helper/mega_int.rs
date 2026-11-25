@@ -1,5 +1,6 @@
 use std::fmt::Display;
 
+#[derive(Clone)]
 pub struct MegaUInt {
     digits: Vec<i8>,
 }
