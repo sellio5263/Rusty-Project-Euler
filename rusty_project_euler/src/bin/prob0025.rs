@@ -1,5 +1,6 @@
 use rusty_project_euler::helper::mega_int::MegaUInt;
 use std::env;
+use std::mem::swap;
 use std::time::Instant;
 
 fn main() {
@@ -30,12 +31,34 @@ fn problem(param: Option<u32>) -> u32 {
     let mut two_prev = MegaUInt::one();
     let mut prev = MegaUInt::one();
     let mut index = 2; // Starting from the 3rd Fibonacci number
-    let mut current = MegaUInt::zero();
-    while current.digits().len() < digit_count {
+    let mut current: MegaUInt;
+
+    loop {
         current = two_prev.add(&prev);
-        two_prev = prev;
-        prev = current.clone();
         index += 1;
+
+        if current.digits().len() >= digit_count {
+            break;
+        }
+
+        swap(&mut two_prev, &mut prev);
+        swap(&mut prev, &mut current);
     }
     index
 }
+
+// fn _problem2(param: Option<u32>) -> u32 {
+//     let digit_count = param.unwrap_or(1000) as usize;
+//     // Implementation for finding the index-th Fibonacci number with the specified digit count
+//     let mut two_prev = MegaUInt::one();
+//     let mut prev = MegaUInt::one();
+//     let mut index = 2; // Starting from the 3rd Fibonacci number
+//     let mut current = MegaUInt::zero();
+//     while current.digits().len() < digit_count {
+//         current = two_prev.add(&prev);
+//         two_prev = prev;
+//         prev = current.clone();
+//         index += 1;
+//     }
+//     index
+// }
